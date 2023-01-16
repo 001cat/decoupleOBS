@@ -17,17 +17,15 @@ the time mean of correlation in frequency from many time windows. The Z
 
 recording with A part removed is:
 
-$$ f_{Z,A} = f_{Z} - \frac{ \overline{f_{Z} \cdot f_{A}^{\ast}}}{\overline{ f_{A} \cdot f_{A}^{\ast} }}  $$
+$$f_{Z,A} = f_{Z} - \frac{ \overline{f_{Z} \cdot f_{A}^{\ast}}}{\overline{f_{A} \cdot f_{A}^{\ast}}} f_{A}$$
 
-$$f_{Z,A} = f_{Z} - \frac{ \overline{f_{Z} \cdot f_{A}^{*}}}{\overline{f_{A} \cdot f_{A}^{*}}} f_{A}$$
-
-here the overline means time average, and $f_{Z,A}$,$f_{Z}$ and $f_{A}$ are recordings for single time window. The $\frac{ \overline{f_{Z} \cdot f_{A}^*}}{\overline{f_{A} \cdot f_{A}^*}}$ is also called transfer function, here I denote it as $TF(Z,A)$.
+here the overline means time average, and $f_{Z,A}$,$f_{Z}$ and $f_{A}$ are recordings for single time window. The $\frac{ \overline{f_{Z} \cdot f_{A}^\ast}}{\overline{f_{A} \cdot f_{A}^\ast}}$ is also called transfer function, here I denote it as $TF(Z,A)$.
 
 
 
 The same idea can be used in system with more component, like it is possible to remove A from B and Z first, and then remove B from Z:
 
-$$f_{Z,BA} = f_{Z,A} - \frac{ \overline{f_{Z,A} \cdot f_{B,A}^*}}{\overline{f_{B,A} \cdot f_{B,A}^*}} f_{B,A}$$
+$$f_{Z,BA} = f_{Z,A} - \frac{ \overline{f_{Z,A} \cdot f_{B,A}^\ast}}{\overline{f_{B,A} \cdot f_{B,A}^\ast}} f_{B,A}$$
 
 Similar, I denote transfer function here as $TF(Z,B,A)$, and after some derivation, we can have:
 
