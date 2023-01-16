@@ -1,3 +1,14 @@
+# OBS tilt/compliance removal
+
+## Introduction
+This is a package to remove tilt and complaince noise from the vertical-component recording of Ocean Bottom Seismometer (OBS), based on [Bell et al. (2005)](https://doi.org/10.1785/012014005), [Ye & Ritzwoller (2017)](https://doi.org/10.1093/gji/ggv024) and [Janiszewski et al. (2019)](https://doi.org/10.1093/gji/ggz051).
+
+## Usage
+You can import and use the four functions after removing response and resampling (if necesaary.)
+calSpectra -> cleanSpectra -> calTransfer -> deCouple
+
+## Algorithm
+
 Suppose two components Z and A are linear coupled, the raw recordings are
 
 fZ and fA in frequency domain. The part comes from A can be estimated by 
@@ -6,7 +17,7 @@ the time mean of correlation in frequency from many time windows. The Z
 
 recording with A part removed is:
 
-$$f_{Z,A} = f_{Z} - \frac{ \overline{f_{Z} \cdot f_{A}^*}}{\overline{f_{A} \cdot f_{A}^*}} f_{A}$$
+$$f_{Z,A} = f_{Z} - \frac{ \overline{f_{Z} \cdot f_{A}^{*}}}{\overline{f_{A} \cdot f_{A}^{*}}} f_{A}$$
 
 here the overline means time average, and $f_{Z,A}$,$f_{Z}$ and $f_{A}$ are recordings for single time window. The $\frac{ \overline{f_{Z} \cdot f_{A}^*}}{\overline{f_{A} \cdot f_{A}^*}}$ is also called transfer function, here I denote it as $TF(Z,A)$.
 
@@ -14,7 +25,7 @@ here the overline means time average, and $f_{Z,A}$,$f_{Z}$ and $f_{A}$ are reco
 
 The same idea can be used in system with more component, like it is possible to remove A from B and Z first, and then remove B from Z:
 
-$$f_{Z,BA} = f_{Z,A} - \frac{ \overline{f_{Z,A} \cdot f_{B,A}^**}}{\overline{f_{B,A} \cdot f_{B,A}^**}} f_{B,A}$$
+$$f_{Z,BA} = f_{Z,A} - \frac{ \overline{f_{Z,A} \cdot f_{B,A}^*}}{\overline{f_{B,A} \cdot f_{B,A}^*}} f_{B,A}$$
 
 Similar, I denote transfer function here as $TF(Z,B,A)$, and after some derivation, we can have:
 
@@ -44,27 +55,4 @@ And also for more complex case:
 
 $$TF(Z,C,B,A) = \frac{TF(Z,C,A)-[T(Z,B)+T(B,C)-T(Z,B) T(B,C)]TF(Z,B,A)TF(B,C,A)}{1-[2T(B,C)-T^2(B,C)]TF(C,B,A)TF(B,C,A)}$$
 
-
-
-
-
-Changelogs:
-
-V0.6: allow event length != noise window length by interpolation, still recommand dt to be the same
-
-V0.7: apply taper when calculate transfer function and bases, which shoule be more accurate
-      But fixed (l713): argmax - > argmin
-
-V0.8: fix a bug: if tr.stats.npts*tr.stats.delta < minLen -> if tr.stats.npts*tr.stats.delta < 80000.0
-      change all spec file name from YYYYMMDD to YYYYMMDDHHMMSS
-      change priority of tranfer function used when decouple
-      allow velocity record (please highpass filter first!!) as input, but output are still in displacement
-
-V0.81: allow filtering first
-
-
-
-
-What's next:
-
-try remove pressure first before estimate rotation angle
+## Reference
