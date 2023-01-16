@@ -17,6 +17,8 @@ the time mean of correlation in frequency from many time windows. The Z
 
 recording with A part removed is:
 
+$$f_{Z,A} = f_{Z} - \frac{ \overline{f_{Z} \cdot f_{A}^{*}}}{2}$$
+
 $$f_{Z,A} = f_{Z} - \frac{ \overline{f_{Z} \cdot f_{A}^{*}}}{\overline{f_{A} \cdot f_{A}^{*}}} f_{A}$$
 
 here the overline means time average, and $f_{Z,A}$,$f_{Z}$ and $f_{A}$ are recordings for single time window. The $\frac{ \overline{f_{Z} \cdot f_{A}^*}}{\overline{f_{A} \cdot f_{A}^*}}$ is also called transfer function, here I denote it as $TF(Z,A)$.
@@ -55,4 +57,3 @@ And also for more complex case:
 
 $$TF(Z,C,B,A) = \frac{TF(Z,C,A)-[T(Z,B)+T(B,C)-T(Z,B) T(B,C)]TF(Z,B,A)TF(B,C,A)}{1-[2T(B,C)-T^2(B,C)]TF(C,B,A)TF(B,C,A)}$$
 
-## Reference
