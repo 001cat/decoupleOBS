@@ -17,7 +17,7 @@ the time mean of correlation in frequency from many time windows. The Z
 
 recording with A part removed is:
 
-$$f_{Z,A} = f_{Z} - \frac{ \overline{f_{Z} \cdot f_{A}^{*}}}{\overline{f_{A} \cdot f_{A}^{*}}}  $$
+$$ f_{Z,A} = f_{Z} - \frac{ \overline{f_{Z} \cdot f_{A}^{*}}}{\overline{ f_{A} \cdot f_{A}^{*} }}  $$
 
 $$f_{Z,A} = f_{Z} - \frac{ \overline{f_{Z} \cdot f_{A}^{*}}}{\overline{f_{A} \cdot f_{A}^{*}}} f_{A}$$
 
